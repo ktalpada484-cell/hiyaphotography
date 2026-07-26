@@ -31,12 +31,12 @@
             overflow-x: hidden;
         }
 
-        /* Glassmorphism Header with Single Line Layout */
+        /* Header (Aapki pasand ke mutabik do-line format me) */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 6%;
+            padding: 12px 8%;
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -50,27 +50,26 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         /* Circular Golden Ring Logo Style */
         .brand-logo-img {
-            width: 52px;
-            height: 52px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             object-fit: cover;
             border: 2.5px solid var(--accent-gold);
             box-shadow: 0 3px 10px rgba(197, 160, 89, 0.45);
-            flex-shrink: 0;
         }
 
-        /* Single Line Clean Brand Text */
+        /* Two-Line Brand Text */
         .brand-text {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 21px;
             font-weight: 600;
             color: #b75d79;
-            white-space: nowrap;
+            line-height: 1.15;
             letter-spacing: 0.5px;
         }
 
@@ -78,7 +77,7 @@
             background: linear-gradient(135deg, #d87093, #c5a059);
             color: white;
             border: none;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
@@ -86,7 +85,6 @@
             box-shadow: 0 4px 10px rgba(216, 112, 147, 0.3);
             transition: 0.3s;
             font-size: 14px;
-            white-space: nowrap;
         }
 
         .book-btn:hover {
@@ -94,7 +92,7 @@
             opacity: 0.9;
         }
 
-        /* Hero Section with Glass Effect & Couple/Camera Visuals */
+        /* Hero Section */
         .hero {
             min-height: 85vh;
             display: flex;
@@ -109,16 +107,17 @@
             color: white;
         }
 
+        /* Hero Content Box with Extra Curved Corners & Glass Border Effect */
         .hero-content-box {
             background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 40px 30px;
-            border-radius: 20px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            padding: 45px 30px;
+            border-radius: 35px; /* Corners ko aur zyada circle/curve kar diya hai */
             max-width: 750px;
             width: 100%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35), inset 0 0 15px rgba(255,255,255,0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -142,27 +141,13 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        /* Shine/Glimmer Animation Effect on Hero Heading */
         .hero h2 {
             font-family: 'Great Vibes', cursive;
             font-size: 52px;
+            color: #fff5ee;
             letter-spacing: 2px;
             line-height: 1.1;
             text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-            
-            /* Shine Gradient Effect */
-            background: linear-gradient(90deg, #fff5ee 0%, #ffe600 50%, #fff5ee 100%);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: shineText 3s linear infinite;
-        }
-
-        @keyframes shineText {
-            to {
-                background-position: 200% center;
-            }
         }
 
         .hero-tagline {
@@ -283,7 +268,7 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 40px;
-            border-radius: 15px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
@@ -500,29 +485,28 @@
             margin-top: 15px;
         }
 
-        @media(max-width: 480px) {
+        @media(max-width: 768px) {
             .booking-section { margin: 20px; padding: 20px; }
-            .hero h2 { font-size: 42px; }
-            .hero-content-box { padding: 25px 15px; }
+            .hero h2 { font-size: 40px; }
+            .hero-content-box { padding: 30px 20px; border-radius: 28px; }
             header { padding: 10px 4%; }
-            .brand-logo-img { width: 44px; height: 44px; }
-            .brand-text { font-size: 16px; }
-            .book-btn { padding: 8px 14px; font-size: 13px; }
+            .brand-logo-img { width: 50px; height: 50px; }
+            .brand-text { font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Glassmorphism Header (Single Line Layout) -->
+    <!-- Header (Do-line format as requested) -->
     <header>
         <div class="logo-container">
             <img src="logo.png" alt="Hiya Photography Logo" class="brand-logo-img">
-            <div class="brand-text">Hiya Photography</div>
+            <div class="brand-text">Hiya<br>Photography</div>
         </div>
         <a href="#book-form" class="book-btn">Book Now</a>
     </header>
 
-    <!-- Hero Section with Glass Effect, Couple Visuals & Shine Text -->
+    <!-- Hero Section with Curved Glass Box -->
     <section class="hero">
         <div class="hero-content-box">
             <div class="hero-media-showcase">
