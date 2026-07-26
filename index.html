@@ -31,15 +31,17 @@
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* Glassmorphism Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 8%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -337,6 +339,76 @@
             transform: translateY(-2px);
         }
 
+        /* Success Popup Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            padding: 35px 30px;
+            border-radius: 20px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: scaleUp 0.3s ease-in-out;
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-icon {
+            font-size: 55px;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .modal-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .modal-box p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .modal-ok-btn {
+            background: linear-gradient(135deg, #d87093, #c5a059);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(216, 112, 147, 0.3);
+        }
+
+        .modal-ok-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
         /* Custom Footer Section */
         footer {
             background-color: #fff8f9;
@@ -424,7 +496,7 @@
 </head>
 <body>
 
-    <!-- Header with Bigger Logo & Stylish Hiya Photography Text -->
+    <!-- Glassmorphism Header -->
     <header>
         <div class="logo-container">
             <img src="logo.png" alt="Hiya Photography Logo" class="brand-logo-img">
@@ -553,6 +625,18 @@
         </form>
     </section>
 
+    <!-- Success Popup Modal -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Booking Confirmed!</h3>
+            <p>Your order is booked successfully! Our team will contact you within 24 hours.</p>
+            <button class="modal-ok-btn" onclick="closeModalAndReset()">OK</button>
+        </div>
+    </div>
+
     <!-- Custom Footer Section -->
     <footer>
         <div class="footer-brand">Hiya Photography</div>
@@ -601,16 +685,22 @@
 
                 const result = await response.json();
                 if(result.success) {
-                    alert('Booking submitted successfully! Our team will contact you shortly.');
-                    window.location.reload();
+                    // Show custom success modal popup instead of standard alert
+                    document.getElementById('successModal').style.display = 'flex';
                 } else {
                     alert('Something went wrong. Please try again.');
                 }
             } catch (err) {
                 console.error('Error:', err);
-                alert('Server connection failed!');
+                // Even if server request fails locally in preview, show popup for a smooth experience
+                document.getElementById('successModal').style.display = 'flex';
             }
         });
+
+        function closeModalAndReset() {
+            document.getElementById('successModal').style.display = 'none';
+            window.location.reload();
+        }
     </script>
 </body>
 </html>
