@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Hiya Photography</title>
+    <style>
+        :root {
+            --bg-color: #fff0f5;
+            --card-bg: #ffffff;
+            --primary-color: #d87093;
+            --text-color: #4a4a4a;
+            --accent-gold: #c5a059;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-card, .dashboard-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .dashboard-card {
+            max-width: 1000px;
+            display: none;
+            margin: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-family: serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            background: linear-gradient(135deg, #d87093, #c5a059);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .error-msg {
+            color: #d9534f;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logout-btn {
+            background-color: #d9534f;
+            width: auto;
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Container -->
+    <div class="login-card" id="loginCard">
+        <h2>Admin Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div id="errorMsg" class="error-msg"></div>
+        </form>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-card" id="dashboardCard">
+        <div class="top-bar">
+            <h2>Booking Requests (Database)</h2>
+            <button class="btn logout-btn" onclick="logout()">Logout</button>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Submitted At</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Event Date</th>
+                        <th>Occasion</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingTableBody">
+                    <!-- Dynamic Data -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if(user === 'hiya@1123' && pass === 'hiya1123') {
+                document.getElementById('loginCard').style.display = 'none';
+                document.getElementById('dashboardCard').style.display = 'block';
+                loadBookings();
+            } else {
+                document.getElementById('errorMsg').innerText = 'Invalid Username or Password!';
+            }
+        });
+
+        async function loadBookings() {
+            const tbody = document.getElementById('bookingTableBody');
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center;">Loading bookings from database...</td></tr>`;
+
+            try {
+                const response = await fetch('/api/bookings');
+                const bookings = await response.json();
+
+                tbody.innerHTML = '';
+
+                if(bookings.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #888;">No bookings found yet.</td></tr>`;
+                    return;
+                }
+
+                bookings.forEach(b => {
+                    const formattedDate = new Date(b.createdAt).toLocaleString();
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${formattedDate}</td>
+                        <td><b>${b.name}</b></td>
+                        <td>${b.city}</td>
+                        <td>${b.phone}</td>
+                        <td>${b.email}</td>
+                        <td>${b.eventDate}</td>
+                        <td>${b.eventType}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (err) {
+                console.error('Error loading bookings:', err);
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: red;">Failed to load data from server.</td></tr>`;
+            }
+        }
+
+        function logout() {
+            document.getElementById('dashboardCard').style.display = 'none';
+            document.getElementById('loginCard').style.display = 'block';
+            document.getElementById('loginForm').reset();
+            document.getElementById('errorMsg').innerText = '';
+        }
+    </script>
+</body>
+</html>
+
