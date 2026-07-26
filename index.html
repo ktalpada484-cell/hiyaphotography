@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiya Photography</title>
+    <!-- Google Fonts for Cursive Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #fff0f5;
-            --card-bg: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.85);
             --primary-color: #d87093;
             --text-color: #4a4a4a;
             --accent-gold: #c5a059;
@@ -32,8 +36,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background-color: var(--card-bg);
+            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -52,10 +57,11 @@
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid var(--accent-gold);
+            background-color: #ddd;
         }
 
         .logo-container h1 {
-            font-size: 24px;
+            font-size: 22px;
             color: var(--text-color);
             font-family: serif;
             letter-spacing: 1px;
@@ -65,7 +71,7 @@
             background: linear-gradient(135deg, #d87093, #c5a059);
             color: white;
             border: none;
-            padding: 10px 25px;
+            padding: 10px 22px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
@@ -79,7 +85,7 @@
             opacity: 0.9;
         }
 
-        /* Hero Section */
+        /* Hero Section with Glass Effect & Couple/Camera Visuals */
         .hero {
             min-height: 85vh;
             display: flex;
@@ -88,24 +94,59 @@
             align-items: center;
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             color: white;
         }
 
+        .hero-content-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 40px 30px;
+            border-radius: 20px;
+            max-width: 750px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hero-media-showcase {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .hero-media-showcase img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
         .hero h2 {
-            font-size: 46px;
-            margin-bottom: 10px;
-            font-family: serif;
-            letter-spacing: 1px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: #fff5ee;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
 
         .hero-tagline {
-            font-size: 18px;
-            margin-bottom: 25px;
+            font-size: 16px;
             font-weight: 300;
-            max-width: 600px;
+            color: #f0f0f0;
+            max-width: 550px;
         }
 
         /* Scrolling Text Container */
@@ -114,7 +155,7 @@
             overflow: hidden;
             background: rgba(216, 112, 147, 0.85);
             padding: 12px 0;
-            margin: 20px 0 30px 0;
+            margin: 25px 0;
             white-space: nowrap;
             box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
         }
@@ -122,7 +163,7 @@
         .scrolling-text {
             display: inline-block;
             animation: marquee 20s linear infinite;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             letter-spacing: 1px;
             color: #fff;
@@ -133,23 +174,25 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* Experience & Rating Badges */
         .badge-container {
             display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .badge-box {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-size: 15px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 14px;
             font-weight: 600;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         /* Gallery Section Styles */
@@ -214,7 +257,8 @@
         .booking-section {
             max-width: 700px;
             margin: 50px auto;
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -288,18 +332,86 @@
             transform: translateY(-2px);
         }
 
+        /* Custom Footer Section (Matching Reference Style) */
         footer {
+            background-color: #fff8f9;
+            padding: 50px 20px 30px 20px;
             text-align: center;
-            padding: 25px;
-            background-color: var(--card-bg);
-            margin-top: 50px;
-            font-size: 14px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #f2dede;
+            margin-top: 60px;
+            color: var(--text-color);
+        }
+
+        .footer-brand {
+            font-family: serif;
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a, .social-icons span {
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent-gold);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
+            transition: 0.3s;
+        }
+
+        /* Sirf Instagram linkable rahega, baaki non-clickable hain */
+        .social-icons a:hover {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+
+        .social-icons span {
+            cursor: default;
+            opacity: 0.9;
+        }
+
+        .footer-contact {
+            margin-bottom: 25px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .footer-contact h4 {
+            font-size: 20px;
+            font-family: serif;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .footer-divider {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+            margin: 20px auto;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #777;
+            margin-top: 15px;
         }
 
         @media(max-width: 768px) {
             .booking-section { margin: 20px; padding: 20px; }
-            .hero h2 { font-size: 30px; }
+            .hero h2 { font-size: 40px; }
+            .hero-content-box { padding: 25px 15px; }
         }
     </style>
 </head>
@@ -308,32 +420,39 @@
     <!-- Header -->
     <header>
         <div class="logo-container">
-            <img src="7250.jpg" alt="Hiya Photography Logo">
+            <img src="7250.jpg" alt="Hiya Photography Logo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'">
             <h1>Hiya Photography</h1>
         </div>
         <a href="#book-form" class="book-btn">Book Now</a>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Glass Effect & Couple/Camera Visuals -->
     <section class="hero">
-        <h2>Where Royalty Meets Rituals</h2>
-        <p class="hero-tagline">Preserving your priceless emotions and cinematic moments with perfection.</p>
-
-        <!-- Auto Scrolling Text Line -->
-        <div class="scrolling-text-container">
-            <div class="scrolling-text">
-                ✨ Capturing Beautiful Weddings across Gujarat &nbsp;&nbsp;&bull;&nbsp;&nbsp; Book Your Dream Cinematic Shoot Today &nbsp;&nbsp;&bull;&nbsp;&nbsp; Professional Candid & Traditional Photography ✨
+        <div class="hero-content-box">
+            <div class="hero-media-showcase">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=300&q=80" alt="Couple Shoot">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=300&q=80" alt="Camera Gear">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=300&q=80" alt="Wedding Couple">
             </div>
-        </div>
 
-        <!-- Experience & Google Rating Badges -->
-        <div class="badge-container">
-            <div class="badge-box">🏆 8+ Years of Professional Experience</div>
-            <div class="badge-box">⭐ 4.5 Google Rating (Trusted by Clients)</div>
-        </div>
+            <h2>Where Royalty Meets Rituals</h2>
+            <p class="hero-tagline">Preserving your priceless emotions and cinematic moments with perfection.</p>
 
-        <a href="#book-form" class="book-btn" style="padding: 12px 35px; font-size: 16px;">Book Your Slot</a>
+            <div class="badge-container">
+                <div class="badge-box">🏆 8+ Years of Experience</div>
+                <div class="badge-box">⭐ 4.5 Google Rating</div>
+            </div>
+
+            <a href="#book-form" class="book-btn" style="padding: 12px 35px; font-size: 16px;">Book Your Slot</a>
+        </div>
     </section>
+
+    <!-- Auto Scrolling Text Line -->
+    <div class="scrolling-text-container">
+        <div class="scrolling-text">
+            ✨ Capturing Beautiful Weddings across Gujarat &nbsp;&nbsp;&bull;&nbsp;&nbsp; Book Your Dream Cinematic Shoot Today &nbsp;&nbsp;&bull;&nbsp;&nbsp; Professional Candid & Traditional Photography ✨
+        </div>
+    </div>
 
     <!-- Gallery Section (6-10 Photos Showcase) -->
     <section class="gallery-section">
@@ -427,8 +546,33 @@
         </form>
     </section>
 
+    <!-- Custom Footer Section -->
     <footer>
-        <p>&copy; 2026 Hiya Photography. All rights reserved.</p>
+        <div class="footer-brand">Hiya Photography</div>
+
+        <!-- Social Media Icons (Only Instagram is clickable as requested) -->
+        <div class="social-icons">
+            <!-- LinkedIn (Non-clickable) -->
+            <span><i class="fa-brands fa-linkedin-in"></i></span>
+            <!-- Facebook (Non-clickable) -->
+            <span><i class="fa-brands fa-facebook-f"></i></span>
+            <!-- Instagram (Clickable with link) -->
+            <a href="https://www.instagram.com/hiya_hetanshi_photography?igsh=MXRxNXpyeGp5d2MzMw==" target="_blank" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><strong>Phone:</strong> +91 63525 09887</p>
+            <p>Khodiyar Bhagol, Gujarat, Anand, Petlad - 388450</p>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="copyright">
+            <p>&copy; 2026 Hiya Photography. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
@@ -451,19 +595,4 @@
                     body: JSON.stringify(bookingData)
                 });
 
-                const result = await response.json();
-                if(result.success) {
-                    alert('Booking submitted successfully! Our team will contact you shortly.');
-                    window.location.reload();
-                } else {
-                    alert('Something went wrong. Please try again.');
-                }
-            } catch (err) {
-                console.error('Error:', err);
-                alert('Server connection failed!');
-            }
-        });
-    </script>
-</body>
-  </html>
-
+       
