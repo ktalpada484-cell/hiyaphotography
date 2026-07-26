@@ -36,7 +36,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 8%;
+            padding: 12px 8%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -48,36 +48,39 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .logo-container img {
-            height: 50px;
-            width: 50px;
+            height: 48px;
+            width: 48px;
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid var(--accent-gold);
-            background-color: #ddd;
+            box-shadow: 0 2px 8px rgba(197, 160, 89, 0.4);
+            background-color: #fff;
         }
 
         .logo-container h1 {
-            font-size: 22px;
+            font-size: 20px;
             color: var(--text-color);
             font-family: serif;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
         }
 
         .book-btn {
             background: linear-gradient(135deg, #d87093, #c5a059);
             color: white;
             border: none;
-            padding: 10px 22px;
+            padding: 10px 20px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
             text-decoration: none;
             box-shadow: 0 4px 10px rgba(216, 112, 147, 0.3);
             transition: 0.3s;
+            font-size: 14px;
         }
 
         .book-btn:hover {
@@ -332,7 +335,7 @@
             transform: translateY(-2px);
         }
 
-        /* Custom Footer Section (Matching Reference Style) */
+        /* Custom Footer Section */
         footer {
             background-color: #fff8f9;
             padding: 50px 20px 30px 20px;
@@ -371,7 +374,6 @@
             transition: 0.3s;
         }
 
-        /* Sirf Instagram linkable rahega, baaki non-clickable hain */
         .social-icons a:hover {
             transform: scale(1.1);
             opacity: 0.9;
@@ -412,6 +414,8 @@
             .booking-section { margin: 20px; padding: 20px; }
             .hero h2 { font-size: 40px; }
             .hero-content-box { padding: 25px 15px; }
+            header { padding: 10px 4%; }
+            .logo-container h1 { font-size: 17px; }
         }
     </style>
 </head>
@@ -420,8 +424,8 @@
     <!-- Header -->
     <header>
         <div class="logo-container">
-            <img src="7250.jpg" alt="Hiya Photography Logo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'">
-            <h1>Hiya Photography</h1>
+            <img src="7250_2.jpg" alt="Heotu Photography Logo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'">
+            <h1>Heotu Photography</h1>
         </div>
         <a href="#book-form" class="book-btn">Book Now</a>
     </header>
@@ -454,7 +458,7 @@
         </div>
     </div>
 
-    <!-- Gallery Section (6-10 Photos Showcase) -->
+    <!-- Gallery Section (Fixed Images) -->
     <section class="gallery-section">
         <h3>Our Portfolio & Special Moments</h3>
         <p>A glimpse of our finest wedding, engagement, decoration, and celebration captures</p>
@@ -481,7 +485,7 @@
                 <div class="gallery-overlay">Birthday Parties</div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1545232979-fbf802c2825d?auto=format&fit=crop&w=600&q=80" alt="Anniversary Event">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Anniversary Event">
                 <div class="gallery-overlay">Anniversary Events</div>
             </div>
         </div>
@@ -548,7 +552,7 @@
 
     <!-- Custom Footer Section -->
     <footer>
-        <div class="footer-brand">Hiya Photography</div>
+        <div class="footer-brand">Heotu Photography</div>
 
         <!-- Social Media Icons (Only Instagram is clickable as requested) -->
         <div class="social-icons">
@@ -571,7 +575,7 @@
         <div class="footer-divider"></div>
 
         <div class="copyright">
-            <p>&copy; 2026 Hiya Photography. All rights reserved.</p>
+            <p>&copy; 2026 Heotu Photography. All rights reserved.</p>
         </div>
     </footer>
 
@@ -591,8 +595,4 @@
             try {
                 const response = await fetch('/api/book', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(bookingData)
-                });
-
-       
+                    headers: { 'Con
