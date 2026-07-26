@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heotu Photography</title>
+    <title>Hiya Photography</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for Social Media Icons -->
@@ -48,13 +48,25 @@
         .logo-container {
             display: flex;
             align-items: center;
+            gap: 12px;
         }
 
-        /* Actual Logo Image Styling */
+        /* Circular Golden Ring Logo Style */
         .brand-logo-img {
-            height: 45px;
-            width: auto;
-            object-fit: contain;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 2px 8px rgba(197, 160, 89, 0.4);
+        }
+
+        .brand-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .book-btn {
@@ -403,16 +415,18 @@
             .hero h2 { font-size: 40px; }
             .hero-content-box { padding: 25px 15px; }
             header { padding: 10px 4%; }
-            .brand-logo-img { height: 38px; }
+            .brand-logo-img { width: 42px; height: 42px; }
+            .brand-text { font-size: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header with Actual Logo Image -->
+    <!-- Header with Circular Golden Ring Logo and Hiya Photography Text -->
     <header>
         <div class="logo-container">
-            <img src="logo.png" alt="Heotu Photography Logo" class="brand-logo-img">
+            <img src="logo.png" alt="Hiya Photography Logo" class="brand-logo-img">
+            <div class="brand-text">Hiya<br>Photography</div>
         </div>
         <a href="#book-form" class="book-btn">Book Now</a>
     </header>
@@ -539,7 +553,7 @@
 
     <!-- Custom Footer Section -->
     <footer>
-        <div class="footer-brand">Heotu Photography</div>
+        <div class="footer-brand">Hiya Photography</div>
 
         <!-- Social Media Icons -->
         <div class="social-icons">
@@ -559,7 +573,7 @@
         <div class="footer-divider"></div>
 
         <div class="copyright">
-            <p>&copy; 2026 Heotu Photography. All rights reserved.</p>
+            <p>&copy; 2026 Hiya Photography. All rights reserved.</p>
         </div>
     </footer>
 
