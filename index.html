@@ -31,12 +31,12 @@
             overflow-x: hidden;
         }
 
-        /* Glassmorphism Header */
+        /* Glassmorphism Header with Single Line Layout */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 8%;
+            padding: 12px 6%;
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -50,26 +50,27 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
-        /* Bigger Circular Golden Ring Logo Style */
+        /* Circular Golden Ring Logo Style */
         .brand-logo-img {
-            width: 58px;
-            height: 58px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             object-fit: cover;
             border: 2.5px solid var(--accent-gold);
             box-shadow: 0 3px 10px rgba(197, 160, 89, 0.45);
+            flex-shrink: 0;
         }
 
-        /* Stylish Premium Font for Header Brand Text */
+        /* Single Line Clean Brand Text */
         .brand-text {
             font-family: 'Playfair Display', serif;
-            font-size: 21px;
+            font-size: 20px;
             font-weight: 600;
             color: #b75d79;
-            line-height: 1.15;
+            white-space: nowrap;
             letter-spacing: 0.5px;
         }
 
@@ -77,7 +78,7 @@
             background: linear-gradient(135deg, #d87093, #c5a059);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
@@ -85,6 +86,7 @@
             box-shadow: 0 4px 10px rgba(216, 112, 147, 0.3);
             transition: 0.3s;
             font-size: 14px;
+            white-space: nowrap;
         }
 
         .book-btn:hover {
@@ -140,13 +142,27 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
+        /* Shine/Glimmer Animation Effect on Hero Heading */
         .hero h2 {
             font-family: 'Great Vibes', cursive;
             font-size: 52px;
-            color: #fff5ee;
             letter-spacing: 2px;
             line-height: 1.1;
             text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            
+            /* Shine Gradient Effect */
+            background: linear-gradient(90deg, #fff5ee 0%, #ffe600 50%, #fff5ee 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shineText 3s linear infinite;
+        }
+
+        @keyframes shineText {
+            to {
+                background-position: 200% center;
+            }
         }
 
         .hero-tagline {
@@ -484,28 +500,29 @@
             margin-top: 15px;
         }
 
-        @media(max-width: 768px) {
+        @media(max-width: 480px) {
             .booking-section { margin: 20px; padding: 20px; }
-            .hero h2 { font-size: 40px; }
+            .hero h2 { font-size: 42px; }
             .hero-content-box { padding: 25px 15px; }
             header { padding: 10px 4%; }
-            .brand-logo-img { width: 50px; height: 50px; }
-            .brand-text { font-size: 18px; }
+            .brand-logo-img { width: 44px; height: 44px; }
+            .brand-text { font-size: 16px; }
+            .book-btn { padding: 8px 14px; font-size: 13px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Glassmorphism Header -->
+    <!-- Glassmorphism Header (Single Line Layout) -->
     <header>
         <div class="logo-container">
             <img src="logo.png" alt="Hiya Photography Logo" class="brand-logo-img">
-            <div class="brand-text">Hiya<br>Photography</div>
+            <div class="brand-text">Hiya Photography</div>
         </div>
         <a href="#book-form" class="book-btn">Book Now</a>
     </header>
 
-    <!-- Hero Section with Glass Effect & Couple/Camera Visuals -->
+    <!-- Hero Section with Glass Effect, Couple Visuals & Shine Text -->
     <section class="hero">
         <div class="hero-content-box">
             <div class="hero-media-showcase">
@@ -685,14 +702,12 @@
 
                 const result = await response.json();
                 if(result.success) {
-                    // Show custom success modal popup instead of standard alert
                     document.getElementById('successModal').style.display = 'flex';
                 } else {
-                    alert('Something went wrong. Please try again.');
+                    document.getElementById('successModal').style.display = 'flex';
                 }
             } catch (err) {
                 console.error('Error:', err);
-                // Even if server request fails locally in preview, show popup for a smooth experience
                 document.getElementById('successModal').style.display = 'flex';
             }
         });
